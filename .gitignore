@@ -5,6 +5,7 @@
 #Visual Studio files
 *.suo
 obj/
+Web.config
 
 # Office Temp Files
 ~$*
