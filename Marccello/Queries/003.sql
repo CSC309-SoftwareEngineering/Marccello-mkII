@@ -1,0 +1,1 @@
+INSERT into Courses (name,department, course_number) VALUES ('Intro Programing','CSC',101);
