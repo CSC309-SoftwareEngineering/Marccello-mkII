@@ -26,7 +26,7 @@ if %exists%==0 (
 for %%f in (*.sql) do (
 	if not %%f==001MarccelloCreate.sql (
 		if %%f gtr %curVer% (
-			sqlcmd  -S %computername% -E -d Marccello -i %%f
+			sqlcmd  -S %computername%\SQLEXPRESS -E -d Marccello -i %%f
 			ECHO Added from %%f
 			ECHO %%f > DB_Version.txt
 		)
