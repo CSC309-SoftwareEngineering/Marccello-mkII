@@ -2,7 +2,7 @@
 set exists=0
 set curVer=
 :run script to create Database
-sqlcmd -S %computername% -E -i 001MarccelloCreate.sql
+sqlcmd -S %computername%\SQLEXPRESS -E -i 001MarccelloCreate.sql
 
 :read version number from DB_Version.txt
 for %%f in (*.txt) do (
