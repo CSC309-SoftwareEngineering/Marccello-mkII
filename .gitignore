@@ -8,3 +8,6 @@ obj/
 
 # Office Temp Files
 ~$*
+
+# DB Versioning
+DB_Version.txt
