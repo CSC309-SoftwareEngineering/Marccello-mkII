@@ -10,5 +10,11 @@ namespace Marcello.Tests
     [TestFixture]
     class ControllerTest
     {
+        [Test]
+        public void IsTrue()
+        {
+            Assert.AreEqual(0, 1);
+        }
+        
     }
 }
