@@ -10,4 +10,4 @@ obj/
 ~$*
 
 # DB Versioning
-DB_Version.txt
+Queries/DB_Version.txt
