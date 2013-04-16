@@ -1,0 +1,43 @@
+﻿@model Marccello.course
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>course</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.course_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.course_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.major.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.major.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.course_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.course_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.depart_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.depart_name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

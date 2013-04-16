@@ -1,17 +1,43 @@
-﻿@{
+﻿@model IEnumerable<Marccello.major>
+
+@{
     ViewBag.Title = "Index";
 }
+@using (Html.BeginForm("Index","Course"))
+{
+    @Html.DropDownList("db.majors.ToList()", "--Select One--")
+    <input type ="submit" value ="submit" />
+}
+<h2>Index</h2>
 
-<h2>Welcome to Marccello v0.2</h2>
-<p></p>
-@Html.DropDownList("db.majors.ToList()", "--Select One--")
-<script type="text/javascript">
-<!--
-    // Test to see if jQuery has been included successfully.
-    $(document).ready(function() {
-        $("h2 ~ p").text("It's dumblyadorable!");
-    });
-//-->
-</script>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th></th>
+    </tr>
 
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.department)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
 
+</table>
