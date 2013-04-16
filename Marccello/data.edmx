@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="marccelloModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="marccelloModelStoreContainer">
+          <EntitySet Name="course" EntityType="marccelloModel.Store.course" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="major" EntityType="marccelloModel.Store.major" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="semester" EntityType="marccelloModel.Store.semester" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="fk_course_department" Association="marccelloModel.Store.fk_course_department">
+            <End Role="major" EntitySet="major" />
+            <End Role="course" EntitySet="course" />
+          </AssociationSet>
+          <AssociationSet Name="fk_semester_course_id" Association="marccelloModel.Store.fk_semester_course_id">
+            <End Role="course" EntitySet="course" />
+            <End Role="semester" EntitySet="semester" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="course">
+          <Key>
+            <PropertyRef Name="course_id" />
+          </Key>
+          <Property Name="course_id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="department" Type="varchar" MaxLength="10" />
+          <Property Name="course_name" Type="varchar" MaxLength="50" />
+          <Property Name="depart_name" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="major">
+          <Key>
+            <PropertyRef Name="department" />
+          </Key>
+          <Property Name="department" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="name" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="semester">
+          <Key>
+            <PropertyRef Name="semester_id" />
+          </Key>
+          <Property Name="semester_id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="course_id" Type="varchar" MaxLength="50" />
+          <Property Name="course_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="fk_course_department">
+          <End Role="major" Type="marccelloModel.Store.major" Multiplicity="0..1" />
+          <End Role="course" Type="marccelloModel.Store.course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="major">
+              <PropertyRef Name="department" />
+            </Principal>
+            <Dependent Role="course">
+              <PropertyRef Name="department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_semester_course_id">
+          <End Role="course" Type="marccelloModel.Store.course" Multiplicity="0..1" />
+          <End Role="semester" Type="marccelloModel.Store.semester" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_id" />
+            </Principal>
+            <Dependent Role="semester">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="marccelloModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DatabaseFirstContext" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="courses" EntityType="marccelloModel.course" />
+          <EntitySet Name="majors" EntityType="marccelloModel.major" />
+          <EntitySet Name="semesters" EntityType="marccelloModel.semester" />
+          <AssociationSet Name="fk_course_department" Association="marccelloModel.fk_course_department">
+            <End Role="major" EntitySet="majors" />
+            <End Role="course" EntitySet="courses" />
+          </AssociationSet>
+          <AssociationSet Name="fk_semester_course_id" Association="marccelloModel.fk_semester_course_id">
+            <End Role="course" EntitySet="courses" />
+            <End Role="semester" EntitySet="semesters" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="course">
+          <Key>
+            <PropertyRef Name="course_id" />
+          </Key>
+          <Property Name="course_id" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="department" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="course_name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="depart_name" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="major" Relationship="marccelloModel.fk_course_department" FromRole="course" ToRole="major" />
+          <NavigationProperty Name="semesters" Relationship="marccelloModel.fk_semester_course_id" FromRole="course" ToRole="semester" />
+        </EntityType>
+        <EntityType Name="major">
+          <Key>
+            <PropertyRef Name="department" />
+          </Key>
+          <Property Name="department" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="name" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="courses" Relationship="marccelloModel.fk_course_department" FromRole="major" ToRole="course" />
+        </EntityType>
+        <EntityType Name="semester">
+          <Key>
+            <PropertyRef Name="semester_id" />
+          </Key>
+          <Property Name="semester_id" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="course_id" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="course_name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="course" Relationship="marccelloModel.fk_semester_course_id" FromRole="semester" ToRole="course" />
+        </EntityType>
+        <Association Name="fk_course_department">
+          <End Role="major" Type="marccelloModel.major" Multiplicity="0..1" />
+          <End Role="course" Type="marccelloModel.course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="major">
+              <PropertyRef Name="department" />
+            </Principal>
+            <Dependent Role="course">
+              <PropertyRef Name="department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_semester_course_id">
+          <End Role="course" Type="marccelloModel.course" Multiplicity="0..1" />
+          <End Role="semester" Type="marccelloModel.semester" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="course_id" />
+            </Principal>
+            <Dependent Role="semester">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="marccelloModelStoreContainer" CdmEntityContainer="DatabaseFirstContext">
+          <EntitySetMapping Name="courses">
+            <EntityTypeMapping TypeName="marccelloModel.course">
+              <MappingFragment StoreEntitySet="course">
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="course_name" ColumnName="course_name" />
+                <ScalarProperty Name="depart_name" ColumnName="depart_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="majors">
+            <EntityTypeMapping TypeName="marccelloModel.major">
+              <MappingFragment StoreEntitySet="major">
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="semesters">
+            <EntityTypeMapping TypeName="marccelloModel.semester">
+              <MappingFragment StoreEntitySet="semester">
+                <ScalarProperty Name="semester_id" ColumnName="semester_id" />
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="course_name" ColumnName="course_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -4,8 +4,7 @@
 
 <h2>Welcome to Marccello v0.2</h2>
 <p></p>
-@Html.DropDownList("department", "--Select One--")
-
+@Html.DropDownList("db.majors.ToList()", "--Select One--")
 <script type="text/javascript">
 <!--
     // Test to see if jQuery has been included successfully.
@@ -14,3 +13,5 @@
     });
 //-->
 </script>
+
+
