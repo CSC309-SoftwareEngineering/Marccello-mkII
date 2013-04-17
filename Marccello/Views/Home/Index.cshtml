@@ -1,19 +1,29 @@
-﻿@model IEnumerable<Marccello.Major>
+﻿@model Marccello.marccelloEntities1
 
 @{
     ViewBag.Title = "Index";
 }
-
+<script>
+    function thanks() {
+        alert("Thank you!");
+    }
+</script>
 <h2>Please, Select a Major...</h2>
 
-<p>
-  
-</p>
-
-    
+<form method="GET" action="/Home/Index" onsubmit="thanks()">
     <select>
-@foreach (var item in Model) {
-   <option>@Html.DisplayFor(modelItem => item.name)</option>
-}
+        @foreach ( var m in Model.Majors )
+        {
+            <option>@Html.DisplayFor(modelItem => m.name)</option>
+        }
     </select>
 
+    <select>
+        @foreach ( var c in Model.Courses )
+        {
+            <option>@Html.DisplayFor(modelItem => c.name)</option>
+        }
+    </select>
+
+    <input type="submit" name="submit" value="Submit" />
+</form>
