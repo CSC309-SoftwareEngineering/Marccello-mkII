@@ -1,4 +1,4 @@
-﻿@model Marccello.major
+﻿@model Marccello.Major
 
 @{
     ViewBag.Title = "Edit";
@@ -10,15 +10,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>major</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.department)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.department)
-            @Html.ValidationMessageFor(model => model.department)
-        </div>
+        <legend>Major</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.name)
@@ -26,6 +18,14 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.name)
             @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.department)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.department)
+            @Html.ValidationMessageFor(model => model.department)
         </div>
 
         <p>

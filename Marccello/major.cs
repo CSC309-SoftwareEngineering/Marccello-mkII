@@ -12,16 +12,9 @@ namespace Marccello
     using System;
     using System.Collections.Generic;
     
-    public partial class major
+    public partial class Major
     {
-        public major()
-        {
-            this.courses = new HashSet<course>();
-        }
-    
-        public string department { get; set; }
         public string name { get; set; }
-    
-        public virtual ICollection<course> courses { get; set; }
+        public string department { get; set; }
     }
 }

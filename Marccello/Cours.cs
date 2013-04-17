@@ -12,12 +12,10 @@ namespace Marccello
     using System;
     using System.Collections.Generic;
     
-    public partial class semester
+    public partial class Cours
     {
-        public string semester_id { get; set; }
-        public string course_id { get; set; }
-        public string course_name { get; set; }
-    
-        public virtual course course { get; set; }
+        public string name { get; set; }
+        public string department { get; set; }
+        public int course_number { get; set; }
     }
 }

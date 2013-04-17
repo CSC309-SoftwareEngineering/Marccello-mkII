@@ -10,14 +10,15 @@ namespace Marccello.Controllers
 {
     public class HomeController : Controller
     {
-        private DatabaseFirstContext db = new DatabaseFirstContext();
+        private marccelloEntities1 db = new marccelloEntities1();
 
         //
         // GET: /Home/
 
         public ActionResult Index()
         {
-            return View(db.majors.ToList());
+           
+            return View(db.Majors.ToList());
         }
 
         //
@@ -25,7 +26,7 @@ namespace Marccello.Controllers
 
         public ActionResult Details(string id = null)
         {
-            major major = db.majors.Find(id);
+            Major major = db.Majors.Find(id);
             if (major == null)
             {
                 return HttpNotFound();
@@ -45,11 +46,11 @@ namespace Marccello.Controllers
         // POST: /Home/Create
 
         [HttpPost]
-        public ActionResult Create(major major)
+        public ActionResult Create(Major major)
         {
             if (ModelState.IsValid)
             {
-                db.majors.Add(major);
+                db.Majors.Add(major);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -62,7 +63,7 @@ namespace Marccello.Controllers
 
         public ActionResult Edit(string id = null)
         {
-            major major = db.majors.Find(id);
+            Major major = db.Majors.Find(id);
             if (major == null)
             {
                 return HttpNotFound();
@@ -74,7 +75,7 @@ namespace Marccello.Controllers
         // POST: /Home/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(major major)
+        public ActionResult Edit(Major major)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +91,7 @@ namespace Marccello.Controllers
 
         public ActionResult Delete(string id = null)
         {
-            major major = db.majors.Find(id);
+            Major major = db.Majors.Find(id);
             if (major == null)
             {
                 return HttpNotFound();
@@ -104,8 +105,8 @@ namespace Marccello.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(string id)
         {
-            major major = db.majors.Find(id);
-            db.majors.Remove(major);
+            Major major = db.Majors.Find(id);
+            db.Majors.Remove(major);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
