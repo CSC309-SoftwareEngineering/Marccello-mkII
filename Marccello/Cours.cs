@@ -14,8 +14,15 @@ namespace Marccello
     
     public partial class Cours
     {
+        public Cours()
+        {
+            this.Majors = new HashSet<Major>();
+        }
+    
         public string name { get; set; }
         public string department { get; set; }
         public int course_number { get; set; }
+    
+        public virtual ICollection<Major> Majors { get; set; }
     }
 }

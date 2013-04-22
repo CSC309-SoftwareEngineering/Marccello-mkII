@@ -32,6 +32,10 @@
         <EntityContainer Name="marccelloEntities1" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Courses" EntityType="marccelloModel.Cours" />
           <EntitySet Name="Majors" EntityType="marccelloModel.Major" />
+          <AssociationSet Name="CoursMajor" Association="marccelloModel.CoursMajor">
+            <End Role="Cours" EntitySet="Courses" />
+            <End Role="Major" EntitySet="Majors" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Cours">
           <Key>
@@ -40,6 +44,7 @@
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="department" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="course_number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Majors" Relationship="marccelloModel.CoursMajor" FromRole="Cours" ToRole="Major" />
         </EntityType>
         <EntityType Name="Major">
           <Key>
@@ -47,7 +52,12 @@
           </Key>
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="department" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Cours" Relationship="marccelloModel.CoursMajor" FromRole="Major" ToRole="Cours" />
         </EntityType>
+        <Association Name="CoursMajor">
+          <End Type="marccelloModel.Cours" Role="Cours" Multiplicity="*" />
+          <End Type="marccelloModel.Major" Role="Major" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
