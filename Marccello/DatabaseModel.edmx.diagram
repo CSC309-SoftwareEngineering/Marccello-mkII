@@ -7,7 +7,6 @@
       <Diagram DiagramId="24829e66ba1c459bbbadc642c287b9cc" Name="Diagram1">
         <EntityTypeShape EntityType="marccelloModel.Cours" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="marccelloModel.Major" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="marccelloModel.CoursMajor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
