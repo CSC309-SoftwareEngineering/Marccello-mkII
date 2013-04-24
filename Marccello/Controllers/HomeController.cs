@@ -10,14 +10,14 @@ namespace Marccello.Controllers
 {
     public class HomeController : Controller
     {
-        private marccelloEntities1 db = new marccelloEntities1();
+        private marccelloEntities2 db = new marccelloEntities2();
 
         //
         // GET: /Home/
 
         public ActionResult Index()
         {
-            return View (new marccelloEntities1());
+            return View (new marccelloEntities2());
             //return View(db.Majors.ToList());
         }
 
