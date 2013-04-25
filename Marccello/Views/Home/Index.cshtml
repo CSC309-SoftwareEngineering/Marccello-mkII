@@ -1,15 +1,20 @@
-﻿@model Marccello.marccelloEntities2
+﻿@model IEnumerable<Marccello.Major>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Select a Major";
 }
 <script>
-    function thanks() {
-        alert("Thank you!");
-    }
+    $(document).ready(function () {
+        $("#MajorChoice").change(function () {
+            if ($("#MajorChoice option:selected").val()) {
+                $("#MajorForm").submit();
+            }
+        });
+    });
 </script>
 <h2>Please, Select a Major...</h2>
 
+<<<<<<< HEAD
 <form method="GET" action="/Home/Index" onsubmit="thanks()">   
     <select>
         @foreach ( var m in Model.Majors )
@@ -26,4 +31,14 @@
     </select>
     
     <input type="submit" name="submit" value="Submit" />
+=======
+<form method="POST" action="/Home/Courses" id="MajorForm">
+    <select name="majorID" id="MajorChoice">
+        <option>-- Select a Major --</option>
+        @foreach ( var m in Model )
+        {
+            <option value="@m.major_id">@m.name</option>
+        }
+    </select>
+>>>>>>> 085fad1df0a2d927a3b09b930861ae0e640037ee
 </form>

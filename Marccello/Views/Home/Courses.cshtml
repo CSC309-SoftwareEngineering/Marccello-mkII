@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Marccello.Course>
+@{
+    ViewBag.Title = "Courses";
+}
+
+<h2>Courses</h2>
+@foreach (var m in Model) {
+    <p><input type="checkbox" value="@m.course_id" /> @m.course_number - @m.name</p>
+}
