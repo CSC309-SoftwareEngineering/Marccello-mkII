@@ -1,0 +1,29 @@
+﻿@model Marccello.Major
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Major</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.major_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.major_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

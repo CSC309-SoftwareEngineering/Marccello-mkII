@@ -5,9 +5,8 @@
 #Visual Studio files
 *.suo
 obj/
+*.pdb
+Marccello.dll
 
 # Office Temp Files
 ~$*
-
-# DB Versioning
-Marcello/Queries/DB_Version.txt
