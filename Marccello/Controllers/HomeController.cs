@@ -10,7 +10,7 @@ namespace Marccello.Controllers
 {
     public class HomeController : Controller
     {
-        private marccelloEntities2 db = new marccelloEntities2();
+        private marccelloEntities3 db = new marccelloEntities3();
 
         //
         // GET: /Home/
@@ -20,7 +20,7 @@ namespace Marccello.Controllers
             return View(db.Majors.ToList());
         }
 
-        [HttpPost]
+        //[HttpPost]
         public ActionResult Courses(int majorID)
         {
             List<MajorCourse> matchedCourses = (from vc in db.MajorCourses
@@ -33,6 +33,26 @@ namespace Marccello.Controllers
 
             return View(validCourseObjects);
         }
+
+        //[HttpPost]
+        public ActionResult Semesters (int[] courses)
+        {
+            List<Course> SelectedCourses = new List<Course> ();
+            foreach ( int id in courses )
+            {
+                SelectedCourses = ( from c in db.Courses.ToList()
+                                    where c.course_id == id
+                                    select c ).ToList ();
+
+                /*SelectedCourses.Add ( from c in db.Courses
+                                      where c.course_id == id
+                                      select c );
+                 */
+            }
+
+            return View ( SelectedCourses );
+        }
+
         //
         // GET: /Home/Details/5
 

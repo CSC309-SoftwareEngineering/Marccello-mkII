@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Marccello.Course>
+
+@{
+    ViewBag.Title = "Semesters";
+}
+
+<h2>Semesters</h2>
+<p>@Model.Count()</p>
+@foreach (var m in Model) {
+    <p>@m.course_number - @m.name</p>
+}
+

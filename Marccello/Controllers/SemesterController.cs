@@ -8,33 +8,33 @@ using System.Web.Mvc;
 
 namespace Marccello.Controllers
 {
-    public class MajorController : Controller
+    public class SemesterController : Controller
     {
         private marccelloEntities3 db = new marccelloEntities3();
 
         //
-        // GET: /Major/
+        // GET: /Semester/
 
         public ActionResult Index()
         {
-            return View(db.Majors.ToList());
+            return View(db.Semesters.ToList());
         }
 
         //
-        // GET: /Major/Details/5
+        // GET: /Semester/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            Major major = db.Majors.Find(id);
-            if (major == null)
+            Semester semester = db.Semesters.Find(id);
+            if (semester == null)
             {
                 return HttpNotFound();
             }
-            return View(major);
+            return View(semester);
         }
 
         //
-        // GET: /Major/Create
+        // GET: /Semester/Create
 
         public ActionResult Create()
         {
@@ -42,73 +42,73 @@ namespace Marccello.Controllers
         }
 
         //
-        // POST: /Major/Create
+        // POST: /Semester/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Major major)
+        public ActionResult Create(Semester semester)
         {
             if (ModelState.IsValid)
             {
-                db.Majors.Add(major);
+                db.Semesters.Add(semester);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(major);
+            return View(semester);
         }
 
         //
-        // GET: /Major/Edit/5
+        // GET: /Semester/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            Major major = db.Majors.Find(id);
-            if (major == null)
+            Semester semester = db.Semesters.Find(id);
+            if (semester == null)
             {
                 return HttpNotFound();
             }
-            return View(major);
+            return View(semester);
         }
 
         //
-        // POST: /Major/Edit/5
+        // POST: /Semester/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Major major)
+        public ActionResult Edit(Semester semester)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(major).State = EntityState.Modified;
+                db.Entry(semester).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(major);
+            return View(semester);
         }
 
         //
-        // GET: /Major/Delete/5
+        // GET: /Semester/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            Major major = db.Majors.Find(id);
-            if (major == null)
+            Semester semester = db.Semesters.Find(id);
+            if (semester == null)
             {
                 return HttpNotFound();
             }
-            return View(major);
+            return View(semester);
         }
 
         //
-        // POST: /Major/Delete/5
+        // POST: /Semester/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Major major = db.Majors.Find(id);
-            db.Majors.Remove(major);
+            Semester semester = db.Semesters.Find(id);
+            db.Semesters.Remove(semester);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -14,7 +14,7 @@
 </script>
 <h2>Please, Select a Major...</h2>
 
-<form method="POST" action="/Home/Courses" id="MajorForm">
+<form method="GET" action="/Home/Courses" id="MajorForm">
     <select name="majorID" id="MajorChoice">
         <option value=0>-- Select a Major --</option>
         @foreach ( var m in Model )

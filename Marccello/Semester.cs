@@ -12,19 +12,17 @@ namespace Marccello
     using System;
     using System.Collections.Generic;
     
-    public partial class Course
+    public partial class Semester
     {
-        public Course()
+        public Semester()
         {
-            this.MajorCourses = new HashSet<MajorCourse>();
             this.SemesterCourses = new HashSet<SemesterCourse>();
         }
     
-        public int course_id { get; set; }
-        public string name { get; set; }
-        public string course_number { get; set; }
+        public int semester_id { get; set; }
+        public string term { get; set; }
+        public int semester_year { get; set; }
     
-        public virtual ICollection<MajorCourse> MajorCourses { get; set; }
         public virtual ICollection<SemesterCourse> SemesterCourses { get; set; }
     }
 }

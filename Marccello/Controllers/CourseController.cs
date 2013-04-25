@@ -10,7 +10,7 @@ namespace Marccello.Controllers
 {
     public class CourseController : Controller
     {
-        private marccelloEntities2 db = new marccelloEntities2();
+        private marccelloEntities3 db = new marccelloEntities3();
 
         //
         // GET: /Course/

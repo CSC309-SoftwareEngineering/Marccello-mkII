@@ -13,10 +13,10 @@ namespace Marccello
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class marccelloEntities2 : DbContext
+    public partial class marccelloEntities3 : DbContext
     {
-        public marccelloEntities2()
-            : base("name=marccelloEntities2")
+        public marccelloEntities3()
+            : base("name=marccelloEntities3")
         {
         }
     
@@ -28,5 +28,7 @@ namespace Marccello
         public DbSet<Course> Courses { get; set; }
         public DbSet<Major> Majors { get; set; }
         public DbSet<MajorCourse> MajorCourses { get; set; }
+        public DbSet<Semester> Semesters { get; set; }
+        public DbSet<SemesterCourse> SemesterCourses { get; set; }
     }
 }

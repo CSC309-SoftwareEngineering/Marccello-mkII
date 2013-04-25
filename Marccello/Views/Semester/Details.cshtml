@@ -1,0 +1,36 @@
+﻿@model Marccello.Semester
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Semester</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.semester_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.semester_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.term)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.term)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.semester_year)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.semester_year)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
