@@ -30,22 +30,34 @@ namespace Marccello.Controllers
             List<Course> validCourseObjects = (from c in db.Courses.ToList()
                                                join mc in matchedCourses on c.course_id equals mc.course_id
                                                select c).ToList();
+            List<Semester> Semesters = db.Semesters.ToList();
+            ViewBag.Semesters = Semesters;
 
             return View(validCourseObjects);
         }
 
         [HttpPost]
-        public ActionResult Semesters (List<int> courses)
+        public ActionResult Semesters (List<int> courses, int semester)
         {
+            // Retreive the Courses selected
             List<Course> SelectedCourses = new List<Course> ();
             if ( courses != null )
             {
-                var list_of_courses = ( from c in db.Courses
-                                        select c ).ToList ();
+                var list_of_courses = (from c in db.Courses
+                                       select c).ToList();
+                SelectedCourses = list_of_courses.Where(c => courses.Contains(c.course_id)).ToList();
 
-                SelectedCourses = list_of_courses.Where ( c => courses.Contains ( c.course_id ) ).ToList ();
+                // Retreive the Semester That Selected
+                Semester SelectedSemester = new Semester();
+                var list_of_Semesters = (from s in db.Semesters
+                                         where s.semester_id == semester
+                                         select s).ToList();
+                SelectedSemester = list_of_Semesters.First();
+                ViewBag.SelectedSemester = SelectedSemester;
             }
-            return View ( SelectedCourses );
+
+            return View(SelectedCourses);
+
         }
 
         //

@@ -4,8 +4,8 @@
     ViewBag.Title = "Semesters";
 }
 
-<h2>Semesters</h2>
-<p># of courses:  @Model.Count()</p>
+<h2>Semester @ViewBag.SelectedSemester.term @ViewBag.SelectedSemester.semester_year </h2>
+<p># of Courses:  @Model.Count()</p>
 @foreach (var m in Model) {
     <p>@m.course_number - @m.name</p>
 }

@@ -8,6 +8,15 @@
 @foreach (var m in Model) {
     <p><input type="checkbox" name="courses" value="@m.course_id" /> @m.course_number - @m.name</p>
 }
+    <br />
+    <label>Select Semester To Add To</label>
+    <select  name="semester">
+        @foreach (var s in ViewBag.Semesters)
+        {
+            <option value = "@s.semester_id">@s.term @s.semester_year</option>
+        }
+    </select>
+    <br />
     <input type="submit" value="Add" />
 </form>
 
