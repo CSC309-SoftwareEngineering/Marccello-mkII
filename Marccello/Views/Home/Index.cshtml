@@ -10,11 +10,11 @@
 </script>
 <h2>Please, Select a Major...</h2>
 
-<form method="GET" action="/Home/Index" onsubmit="thanks()">
+<form method="GET" action="/Home/Index" onsubmit="thanks()">   
     <select>
         @foreach ( var m in Model.Majors )
         {
-            <option>@Html.DisplayFor(modelItem => m.name)</option>
+            <option value="@m.MajorCourses">@Html.DisplayFor(modelItem => m.name)</option>
         }
     </select>
 
@@ -24,6 +24,6 @@
             <option>@Html.DisplayFor(modelItem => c.name)</option>
         }
     </select>
-
+    
     <input type="submit" name="submit" value="Submit" />
 </form>
