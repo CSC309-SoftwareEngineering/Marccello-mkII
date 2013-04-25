@@ -20,7 +20,19 @@ namespace Marccello.Controllers
             return View(db.Majors.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Courses(int majorID)
+        {
+            List<MajorCourse> matchedCourses = (from vc in db.MajorCourses
+                                                where vc.major_id == majorID
+                                                select vc).ToList();
 
+            List<Course> validCourseObjects = (from c in db.Courses.ToList()
+                                               join mc in matchedCourses on c.course_id equals mc.course_id
+                                               select c).ToList();
+
+            return View(validCourseObjects);
+        }
         //
         // GET: /Home/Details/5
 

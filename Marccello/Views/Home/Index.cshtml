@@ -6,14 +6,16 @@
 <script>
     $(document).ready(function () {
         $("#MajorChoice").change(function () {
-            $("#MajorForm").submit();
+            if ($("#MajorChoice option:selected").val()) {
+                $("#MajorForm").submit();
+            }
         });
     });
 </script>
 <h2>Please, Select a Major...</h2>
 
 <form method="POST" action="/Home/Courses" id="MajorForm">
-    <select name="MajorSelection" id="MajorChoice">
+    <select name="majorID" id="MajorChoice">
         <option>-- Select a Major --</option>
         @foreach ( var m in Model )
         {
