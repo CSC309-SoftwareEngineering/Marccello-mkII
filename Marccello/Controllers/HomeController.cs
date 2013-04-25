@@ -38,24 +38,13 @@ namespace Marccello.Controllers
         public ActionResult Semesters (List<int> courses)
         {
             List<Course> SelectedCourses = new List<Course> ();
-            var list_of_courses = ( from c in db.Courses
-                                    select c ).ToList ();
-
-            SelectedCourses = list_of_courses.Where (c => courses.Contains(c.course_id)).ToList();
-
-            /*foreach ( int id in courses )
+            if ( courses != null )
             {
+                var list_of_courses = ( from c in db.Courses
+                                        select c ).ToList ();
 
-                SelectedCourses = ( from c in db.Courses
-                                    where c.course_id == id
-                                    select c ).ToList ();
-
-                SelectedCourses.Add ( from c in db.Courses
-                                      where c.course_id == id
-                                      select c );
-                 
-            }*/
-
+                SelectedCourses = list_of_courses.Where ( c => courses.Contains ( c.course_id ) ).ToList ();
+            }
             return View ( SelectedCourses );
         }
 

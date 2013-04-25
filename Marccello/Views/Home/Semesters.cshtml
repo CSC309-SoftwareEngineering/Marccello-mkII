@@ -5,7 +5,7 @@
 }
 
 <h2>Semesters</h2>
-<p># of semesters:  @Model.Count()</p>
+<p># of courses:  @Model.Count()</p>
 @foreach (var m in Model) {
     <p>@m.course_number - @m.name</p>
 }
