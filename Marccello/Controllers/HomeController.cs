@@ -20,7 +20,7 @@ namespace Marccello.Controllers
             return View(db.Majors.ToList());
         }
 
-        //[HttpPost]
+        [HttpPost]
         public ActionResult Courses(int majorID)
         {
             List<MajorCourse> matchedCourses = (from vc in db.MajorCourses
@@ -35,20 +35,26 @@ namespace Marccello.Controllers
         }
 
         //[HttpPost]
-        public ActionResult Semesters (int[] courses)
+        public ActionResult Semesters (List<int> courses)
         {
             List<Course> SelectedCourses = new List<Course> ();
-            foreach ( int id in courses )
+            var list_of_courses = ( from c in db.Courses
+                                    select c ).ToList ();
+
+            SelectedCourses = list_of_courses.Where (c => courses.Contains(c.course_id)).ToList();
+
+            /*foreach ( int id in courses )
             {
-                SelectedCourses = ( from c in db.Courses.ToList()
+
+                SelectedCourses = ( from c in db.Courses
                                     where c.course_id == id
                                     select c ).ToList ();
 
-                /*SelectedCourses.Add ( from c in db.Courses
+                SelectedCourses.Add ( from c in db.Courses
                                       where c.course_id == id
                                       select c );
-                 */
-            }
+                 
+            }*/
 
             return View ( SelectedCourses );
         }
