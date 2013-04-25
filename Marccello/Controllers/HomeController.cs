@@ -17,9 +17,9 @@ namespace Marccello.Controllers
 
         public ActionResult Index()
         {
-            return View (new marccelloEntities2());
-            //return View(db.Majors.ToList());
+            return View(db.Majors.ToList());
         }
+
 
         //
         // GET: /Home/Details/5
