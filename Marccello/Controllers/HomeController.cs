@@ -34,7 +34,7 @@ namespace Marccello.Controllers
             return View(validCourseObjects);
         }
 
-        //[HttpPost]
+        [HttpPost]
         public ActionResult Semesters (List<int> courses)
         {
             List<Course> SelectedCourses = new List<Course> ();

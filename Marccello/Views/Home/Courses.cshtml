@@ -4,11 +4,9 @@
 }
 
 <h2>Courses</h2>
-<form method="GET" action="/Home/Semesters">
+<form method="POST" action="/Home/Semesters">
 @foreach (var m in Model) {
     <p><input type="checkbox" name="courses" value="@m.course_id" /> @m.course_number - @m.name</p>
 }
-
-
     <input type="submit" value="Add" />
 </form>
