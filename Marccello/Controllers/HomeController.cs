@@ -23,13 +23,12 @@ namespace Marccello.Controllers
         [HttpPost]
         public ActionResult Courses(int majorID)
         {
-            List<MajorCourse> matchedCourses = (from vc in db.MajorCourses
-                                                where vc.major_id == majorID
-                                                select vc).ToList();
-
-            List<Course> validCourseObjects = (from c in db.Courses.ToList()
-                                               join mc in matchedCourses on c.course_id equals mc.course_id
+            List<Course> validCourseObjects = (from c in db.Courses
+                                               from mc in db.MajorCourses
+                                               where mc.major_id == majorID
+                                               && c.course_id == mc.course_id
                                                select c).ToList();
+
             List<Semester> Semesters = db.Semesters.ToList();
             ViewBag.Semesters = Semesters;
 
