@@ -10,7 +10,7 @@ namespace Marccello.Controllers
 {
     public class MajorController : Controller
     {
-        private marccelloEntities3 db = new marccelloEntities3();
+        private marccelloEntities4 db = new marccelloEntities4();
 
         //
         // GET: /Major/

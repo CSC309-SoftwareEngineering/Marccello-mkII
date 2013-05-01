@@ -13,10 +13,10 @@ namespace Marccello
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class marccelloEntities3 : DbContext
+    public partial class marccelloEntities4 : DbContext
     {
-        public marccelloEntities3()
-            : base("name=marccelloEntities3")
+        public marccelloEntities4()
+            : base("name=marccelloEntities4")
         {
         }
     

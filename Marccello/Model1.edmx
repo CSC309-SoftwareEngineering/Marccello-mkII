@@ -19,11 +19,11 @@
             <End Role="Major" EntitySet="Major" />
             <End Role="MajorCourse" EntitySet="MajorCourse" />
           </AssociationSet>
-          <AssociationSet Name="FK__SemesterC__cours__45F365D3" Association="marccelloModel.Store.FK__SemesterC__cours__45F365D3">
+          <AssociationSet Name="FK__SemesterC__cours__49C3F6B7" Association="marccelloModel.Store.FK__SemesterC__cours__49C3F6B7">
             <End Role="Course" EntitySet="Course" />
             <End Role="SemesterCourse" EntitySet="SemesterCourse" />
           </AssociationSet>
-          <AssociationSet Name="FK__SemesterC__semes__44FF419A" Association="marccelloModel.Store.FK__SemesterC__semes__44FF419A">
+          <AssociationSet Name="FK__SemesterC__semes__48CFD27E" Association="marccelloModel.Store.FK__SemesterC__semes__48CFD27E">
             <End Role="Semester" EntitySet="Semester" />
             <End Role="SemesterCourse" EntitySet="SemesterCourse" />
           </AssociationSet>
@@ -65,7 +65,7 @@
           </Key>
           <Property Name="semester_id" Type="int" Nullable="false" />
           <Property Name="course_id" Type="int" Nullable="false" />
-          <Property Name="p_key" Type="int" Nullable="false" />
+          <Property Name="p_key" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="FK__MajorCour__cours__3A81B327">
           <End Role="Course" Type="marccelloModel.Store.Course" Multiplicity="0..1" />
@@ -91,7 +91,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SemesterC__cours__45F365D3">
+        <Association Name="FK__SemesterC__cours__49C3F6B7">
           <End Role="Course" Type="marccelloModel.Store.Course" Multiplicity="1" />
           <End Role="SemesterCourse" Type="marccelloModel.Store.SemesterCourse" Multiplicity="*" />
           <ReferentialConstraint>
@@ -103,7 +103,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SemesterC__semes__44FF419A">
+        <Association Name="FK__SemesterC__semes__48CFD27E">
           <End Role="Semester" Type="marccelloModel.Store.Semester" Multiplicity="1" />
           <End Role="SemesterCourse" Type="marccelloModel.Store.SemesterCourse" Multiplicity="*" />
           <ReferentialConstraint>
@@ -120,7 +120,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="marccelloModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="marccelloEntities3" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="marccelloEntities4" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Courses" EntityType="marccelloModel.Course" />
           <EntitySet Name="Majors" EntityType="marccelloModel.Major" />
           <EntitySet Name="MajorCourses" EntityType="marccelloModel.MajorCourse" />
@@ -130,7 +130,7 @@
             <End Role="Course" EntitySet="Courses" />
             <End Role="MajorCourse" EntitySet="MajorCourses" />
           </AssociationSet>
-          <AssociationSet Name="FK__SemesterC__cours__45F365D3" Association="marccelloModel.FK__SemesterC__cours__45F365D3">
+          <AssociationSet Name="FK__SemesterC__cours__49C3F6B7" Association="marccelloModel.FK__SemesterC__cours__49C3F6B7">
             <End Role="Course" EntitySet="Courses" />
             <End Role="SemesterCourse" EntitySet="SemesterCourses" />
           </AssociationSet>
@@ -138,7 +138,7 @@
             <End Role="Major" EntitySet="Majors" />
             <End Role="MajorCourse" EntitySet="MajorCourses" />
           </AssociationSet>
-          <AssociationSet Name="FK__SemesterC__semes__44FF419A" Association="marccelloModel.FK__SemesterC__semes__44FF419A">
+          <AssociationSet Name="FK__SemesterC__semes__48CFD27E" Association="marccelloModel.FK__SemesterC__semes__48CFD27E">
             <End Role="Semester" EntitySet="Semesters" />
             <End Role="SemesterCourse" EntitySet="SemesterCourses" />
           </AssociationSet>
@@ -151,7 +151,7 @@
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="course_number" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="MajorCourses" Relationship="marccelloModel.FK__MajorCour__cours__3A81B327" FromRole="Course" ToRole="MajorCourse" />
-          <NavigationProperty Name="SemesterCourses" Relationship="marccelloModel.FK__SemesterC__cours__45F365D3" FromRole="Course" ToRole="SemesterCourse" />
+          <NavigationProperty Name="SemesterCourses" Relationship="marccelloModel.FK__SemesterC__cours__49C3F6B7" FromRole="Course" ToRole="SemesterCourse" />
         </EntityType>
         <EntityType Name="Major">
           <Key>
@@ -178,7 +178,7 @@
           <Property Name="semester_id" Type="Int32" Nullable="false" />
           <Property Name="term" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
           <Property Name="semester_year" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="SemesterCourses" Relationship="marccelloModel.FK__SemesterC__semes__44FF419A" FromRole="Semester" ToRole="SemesterCourse" />
+          <NavigationProperty Name="SemesterCourses" Relationship="marccelloModel.FK__SemesterC__semes__48CFD27E" FromRole="Semester" ToRole="SemesterCourse" />
         </EntityType>
         <EntityType Name="SemesterCourse">
           <Key>
@@ -186,9 +186,9 @@
           </Key>
           <Property Name="semester_id" Type="Int32" Nullable="false" />
           <Property Name="course_id" Type="Int32" Nullable="false" />
-          <Property Name="p_key" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Course" Relationship="marccelloModel.FK__SemesterC__cours__45F365D3" FromRole="SemesterCourse" ToRole="Course" />
-          <NavigationProperty Name="Semester" Relationship="marccelloModel.FK__SemesterC__semes__44FF419A" FromRole="SemesterCourse" ToRole="Semester" />
+          <Property Name="p_key" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Course" Relationship="marccelloModel.FK__SemesterC__cours__49C3F6B7" FromRole="SemesterCourse" ToRole="Course" />
+          <NavigationProperty Name="Semester" Relationship="marccelloModel.FK__SemesterC__semes__48CFD27E" FromRole="SemesterCourse" ToRole="Semester" />
         </EntityType>
         <Association Name="FK__MajorCour__cours__3A81B327">
           <End Role="Course" Type="marccelloModel.Course" Multiplicity="0..1" />
@@ -202,7 +202,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SemesterC__cours__45F365D3">
+        <Association Name="FK__SemesterC__cours__49C3F6B7">
           <End Role="Course" Type="marccelloModel.Course" Multiplicity="1" />
           <End Role="SemesterCourse" Type="marccelloModel.SemesterCourse" Multiplicity="*" />
           <ReferentialConstraint>
@@ -226,7 +226,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SemesterC__semes__44FF419A">
+        <Association Name="FK__SemesterC__semes__48CFD27E">
           <End Role="Semester" Type="marccelloModel.Semester" Multiplicity="1" />
           <End Role="SemesterCourse" Type="marccelloModel.SemesterCourse" Multiplicity="*" />
           <ReferentialConstraint>
@@ -243,7 +243,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="marccelloModelStoreContainer" CdmEntityContainer="marccelloEntities3">
+        <EntityContainerMapping StorageEntityContainer="marccelloModelStoreContainer" CdmEntityContainer="marccelloEntities4">
           <EntitySetMapping Name="Courses">
             <EntityTypeMapping TypeName="marccelloModel.Course">
               <MappingFragment StoreEntitySet="Course">

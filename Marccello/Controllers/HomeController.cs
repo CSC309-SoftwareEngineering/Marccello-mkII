@@ -10,7 +10,7 @@ namespace Marccello.Controllers
 {
     public class HomeController : Controller
     {
-        private marccelloEntities3 db = new marccelloEntities3();
+        private marccelloEntities4 db = new marccelloEntities4();
 
         //
         // GET: /Home/
@@ -42,8 +42,7 @@ namespace Marccello.Controllers
             List<Course> SelectedCourses = new List<Course> ();
             if ( courses != null )
             {
-                var list_of_courses = (from c in db.Courses
-                                       select c).ToList();
+                var list_of_courses = db.Courses.ToList();
                 SelectedCourses = list_of_courses.Where(c => courses.Contains(c.course_id)).ToList();
 
                 // Retreive the Semester That Selected
@@ -53,6 +52,17 @@ namespace Marccello.Controllers
                                          select s).ToList();
                 SelectedSemester = list_of_Semesters.First();
                 ViewBag.SelectedSemester = SelectedSemester;
+
+
+                foreach (var course in SelectedCourses)
+                {
+                    SemesterCourse sc = new SemesterCourse();
+                    sc.course_id = course.course_id;
+                    sc.semester_id = semester;
+
+                    db.SemesterCourses.Add(sc);
+                }
+                db.SaveChanges();
             }
 
             return View(SelectedCourses);

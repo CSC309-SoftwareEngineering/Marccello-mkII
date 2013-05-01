@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="78b48d8f19c94f8ea419a3e721663312" Name="Diagram1">
-        <EntityTypeShape EntityType="marccelloModel.Course" Width="1.5" PointX="2.75" PointY="2.375" IsExpanded="true" />
+      <Diagram DiagramId="3cd5e66a859b4351aef444a069c3f99d" Name="Diagram1">
+        <EntityTypeShape EntityType="marccelloModel.Course" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="marccelloModel.Major" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="marccelloModel.MajorCourse" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="marccelloModel.Semester" Width="1.5" PointX="5.125" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="marccelloModel.SemesterCourse" Width="1.5" PointX="5.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="marccelloModel.MajorCourse" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="marccelloModel.Semester" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="marccelloModel.SemesterCourse" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="marccelloModel.FK__MajorCour__cours__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="marccelloModel.FK__SemesterC__cours__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="marccelloModel.FK__SemesterC__cours__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="marccelloModel.FK__MajorCour__major__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="marccelloModel.FK__SemesterC__semes__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="marccelloModel.FK__SemesterC__semes__48CFD27E" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
